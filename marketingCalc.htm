@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+    <style>
+.clvForm input  {
+    display: block;
+    text-align: right;
+    }
+
+.clvForm input::-webkit-outer-spin-button,
+.clvForm input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+        </style>
+
+<script src="jquery.js"></script>
+
+</head>
+
+<body>
+        <div itemscope itemtype="http://schema.org/Article"><!--Start Article-->
+        
+            <h1 itemprop="headline">Simple Customer Lifetime Value Calculator</h1>
+            <script>
+
+
+                    $(function(){
+                  $("#btnSubmit").click(function(){
+                        // Grab Input Values
+                        var totalRev = $('.totalRev').val();
+                        var totalOrders = $('.totalOrders').val();
+                        var customersLastYear = $('.customersLastYear').val();
+                        
+                        
+                        
+                        // Calculate average order Value and Purchase Frequency
+                        var avgOrderVal = totalRev / totalOrders;
+                        var purchFreq = totalOrders / customersLastYear;
+                        $('.avgOrderVal').html(avgOrderVal.toFixed(2));
+                        $('.purchFreq').html(purchFreq.toFixed(2));
+                
+                        // Calculate Customer Value
+                        var avgOrderVal = $('.avgOrderVal').html();
+                        var purchFreq = $('.purchFreq').html();
+                        var customerVal = avgOrderVal * purchFreq;
+                        $('.customerVal').html(customerVal.toFixed(2));
+                
+                        //Calculate Cutomer Lifetime Value
+                        var customerVal = $('.customerVal').html();
+                        var customerLifeVal = customerVal * 2;
+                        $('.customerLifeVal').html(customerLifeVal.toFixed(2));
+                
+                
+                        
+                  });
+                });
+                
+                
+                </script>
+            
+            <div itemprop="articleBody"><!--Start Article Body-->
+
+                <p>Customer Lifetime Value (CLV) is an estimate of the total profit a customer will generate over their entire relationship with your company. It gauges the long term health of your companies relationships with your customers, and is useful for predicting how much you should spend in marketing to acquire new customers.</p>
+
+                <p>There are many different ways to calculate CLV, and those calculations can range from simplistic to incredibly advanced. With that said, my CLV calculator is very simplistic, and is best suited for the “mom and pop shop” small businesses.</p>
+
+                <p>The final CLV calculation is an estimate on how much you should spend to acquire each new customer.</p>
+
+                <p>For this calculation, you will need -</p>
+                <ul>
+                    <li>- Your Total Revenue from Last Year</li>
+                    <li>- Amount of Customers That Made a Purchase Last Year</li>
+                    <li>- Total Number of Orders you had Last Year</li>
+                </ul>
+              
+          
+    
+                <div itemprop="mainEntityOfPage">
+
+                    <form class="clvForm">
+                        Total Revenue Last Year (365): <input type="number" class="totalRev"><br>
+                        Number of Orders Last Year (365): <input type="number" class="totalOrders"><br>
+                        Customers Last Year (365): <input type="number" class="customersLastYear"><br>
+                        <button type="button" id="btnSubmit" >Calculate</button>
+                    </form>
+                        
+                    <div class="removePadding">
+                        <p>Average Order Value: $<span class="avgOrderVal">&nbsp;</span></p>
+                        <p>Purchase Frequency: <span class="purchFreq">&nbsp;</span></p>
+                        <p>Customer Value: $<span class="customerVal">&nbsp;</span></p>
+                        <p>Customer Lifetime Value(CLV): $<span class="customerLifeVal">&nbsp;</span></p>
+                    </div>
+    </div>
+    <!--End Main Entity-->
+            </div> <!--End Article Body--> 
+            
+                <ul> 
+                <li itemprop="author">Author: Timothy Beachboard</li>
+                <li itemprop="datePublished">Published: August 19, 2018</li>  
+              </ul>
+              {loadposition articlesocial}
+       
+        </div><!--End Article-->
+
+
+
+
+   
+</body>
+</html>
